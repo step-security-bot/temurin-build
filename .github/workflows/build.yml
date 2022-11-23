@@ -60,6 +60,11 @@ jobs:
             variant: bisheng
             image: adoptopenjdk/centos7_build_image
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
 
     - name: Build Linux
@@ -113,6 +118,11 @@ jobs:
         variant: [temurin]
 
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
 
     - name: Install Dependencies
@@ -195,6 +205,11 @@ jobs:
       VS2017_URL: "https://github.com/akashche/msvs_2017_installer_bootstrap/raw/master/vs_community__7955ddbf8a9b49dda0f8d18876e93bd2.exe"
 
      steps:
+     - name: Harden Runner
+       uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+       with:
+         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
      - name: Restore cygwin packages from cache
        id: cygwin
        uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3.0.11
